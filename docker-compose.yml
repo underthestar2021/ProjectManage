@@ -3,7 +3,7 @@ services:
     image: project_manage:1.1.0
     container_name: project_manage
     ports:
-      - "10015:8501"
+      - "5566:8501"
     volumes:
       - ./config:/app/config
       - ./data:/app/data

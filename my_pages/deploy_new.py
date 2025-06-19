@@ -163,6 +163,7 @@ class DeploymentPage:
 
     @st.fragment
     def manage_backup(self):
+        st.caption("本页面主要是用于管理备份相关的数据")
         selection = st.segmented_control(
             "1.请选择要管理的环境", (("开发", "dev"), ("测试", "test"), ("beta", "beta"), ("正式", "pro")),
             selection_mode="single", format_func=lambda x: x[0], key="manage_backup"
@@ -348,6 +349,9 @@ class DeploymentPage:
 
     @st.fragment
     def upload_flows(self):
+        st.caption("本页面主要是用于把flow从a环境同步到b环境，在上线的时候会自动形成操作版本备份，"
+                   "在上线的时候会对提示词标签统一变成当前环境的标签，清除了fileSelect的默认值，把run_flow的options置为选中的数据，"
+                   "操作完成后记得去刷新run_flow")
         select_env = st.segmented_control("1.请选择您的发布环境", (
             ("开发->测试", "dev", "test"),
             ("测试->beta", "test", "beta"),
@@ -427,6 +431,7 @@ class DeploymentPage:
 
     @st.fragment
     def flush_run_flow(self):
+        st.caption("本页面主要是用于刷新run_flow数据，会尝试更新数据，自动连线")
         selection = st.segmented_control(
             "1.请选择刷新环境", (("开发", "dev"), ("测试", "test"), ("beta", "beta"), ("正式", "pro")),
             selection_mode="single", format_func=lambda x: x[0], key="flush_rn_flow"
@@ -581,6 +586,7 @@ class DeploymentPage:
 
     @st.fragment
     def flush_label(self):
+        st.caption("本页面主要是用于刷新Langfuse2的label标签，将不是指定标签的数据刷新到指定标签上去")
         selection = st.segmented_control(
             "1.请选择环境", (("开发", "dev"), ("测试", "test"), ("beta", "beta"), ("正式", "pro")),
             selection_mode="single", format_func=lambda x: x[0], key="flush_label"

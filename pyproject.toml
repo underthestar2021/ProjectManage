@@ -1,0 +1,17 @@
+[project]
+name = "pythonproject"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "psycopg2-binary",
+    "paramiko>=3.5.1",
+    #    "psycopg2>=2.9.10",
+    "pydantic>=2.11.4",
+    "sshtunnel>=0.4.0",
+    "streamlit>=1.45.1",
+    "streamlit-option-menu>=0.4.0",
+    "pymysql>=1.1.1",
+    "deepdiff>=8.5.0",
+    "matplotlib>=3.10.3",
+]

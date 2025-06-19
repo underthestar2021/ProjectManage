@@ -1,24 +1,15 @@
 import random
-import re
 from collections import defaultdict
 
-import numpy as np
 import pandas as pd
 import requests
-from deepdiff import DeepDiff
 from requests.auth import HTTPBasicAuth
 from threading import RLock
 
-from tqdm import tqdm
 import streamlit as st
-import matplotlib.pyplot as plt
-from matplotlib import rcParams
-import altair as alt
 
-from config import CONFIG
 from util import get_pg, get_fuse_pg, get_sqlite
 
-rcParams['font.family'] = 'Heiti TC'
 _lock = RLock()
 
 url = "http://fuse.letuzhixing.com"
@@ -137,7 +128,7 @@ def main():
         project_info = get_project_info(public_key, secret_key)
         project_name = project_info['name']
         # 获取fuse_prompt
-        for item in tqdm(get_fuse_prompt_list(public_key, secret_key, label=label), desc=f"{subject}"):
+        for item in get_fuse_prompt_list(public_key, secret_key, label=label):
             name = item['name']
             versions = item['versions']
             for version in versions:
@@ -175,7 +166,7 @@ def update_prompt_labels(name, version, dest_labels):
 
 def update_latest_to_dev(get_labels="dev", dest_labels="test"):
     names = []
-    for item in tqdm(get_fuse_prompt_list(all_in_one_public, all_in_one_secret, label=get_labels), desc="获取最新数据"):
+    for item in get_fuse_prompt_list(all_in_one_public, all_in_one_secret, label=get_labels):
         if dest_labels not in item['labels']:
             version = item['versions'][0]
             names.append(item['name'])

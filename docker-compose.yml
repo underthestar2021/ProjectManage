@@ -1,11 +1,12 @@
 services:
   project_manage:
-    image: project_manage:1.0.0
+    image: project_manage:1.1.0
     container_name: project_manage
     ports:
       - "10015:8501"
     volumes:
       - ./config:/app/config
+      - ./data:/app/data
     environment:
       - TZ=Asia/Shanghai
     restart: always
